@@ -3,13 +3,11 @@ import { AuthConsumer, } from "../providers/AuthProvider";
 import { Menu } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 
-//finish this
-
 
 class Navbar extends React.Component {
 
   rightNavItems = () => {
-    const { auth: { user , handleLogout, }, location } = this.props;
+    const { auth: {user , handleLogout, }, location } = this.props;
     
     if (user) {
       return (
@@ -27,14 +25,14 @@ class Navbar extends React.Component {
         <Menu.Item
           name="Login"
           id="login"
-          active={this.props.location.pathname ==="/login"}
+          active={location.pathname === "/login"}
         />
         </Link>
         <Link to="/register">
-            <Menu.Item 
+            <Menu.Item
               name="Register"
               id="register"
-              active={this.props.location.pathname === "/register"}
+              active={location.pathname === "/register"}
             />
           </Link>
         </Menu.Menu>
@@ -60,7 +58,7 @@ class Navbar extends React.Component {
       )
     }
 }
-class ConnectedNavbar extends React.Component {
+ export class ConnectedNavbar extends React.Component {
   render() {
     return (
       <AuthConsumer>
@@ -74,4 +72,4 @@ class ConnectedNavbar extends React.Component {
 
 
 
-export default ConnectedNavbar;
+export default withRouter(ConnectedNavbar);
