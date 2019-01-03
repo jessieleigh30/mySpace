@@ -8,7 +8,8 @@ class Login extends React.Component {
   handleSubmit = (e)=> {
     e.preventDefault();
     const { email, password, } = this.state;
-    this.props.auth.handleLogin({ email, password, }, this.props.history );
+    const { auth: { handleLogin, }, history, } = this.props;
+    handleLogin({ email, password, }, history );
   }
   
   handleChange = (e) => {
@@ -22,7 +23,7 @@ class Login extends React.Component {
     return (
       <Segment basic>
         <Header as="h1" textAlign="center">Login</Header>
-          <Form onSubmit={this.handlesubmit}>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Input
               label="email"
               autoFocus
@@ -40,6 +41,7 @@ class Login extends React.Component {
                 placeholder='Password'
                 type='password'
                 onChange={this.handleChange}
+                
           />
           <Segment textAlign='center' basic>
             <Button primary type="submit">Submit</Button>
@@ -54,7 +56,8 @@ export default class ConnectedLogin extends React.Component {
   render() {
     return (
       <AuthConsumer>
-        {auth => <Login{...this.props} auth={auth}/>}
+        {auth => 
+          <Login{...this.props} auth={auth}/>}
       </AuthConsumer>
     )
   }

@@ -46,7 +46,7 @@ class Navbar extends React.Component {
           <Menu pointing secondary>
           <Link to="/">
           <Menu.Item
-            name="Home"
+            name="home"
             id="home"
             active={this.props.location.pathname === "/"}
           />

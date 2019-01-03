@@ -13,8 +13,8 @@ handleRegister = (user, history) => {
     this.setState({ user: res.data.data, });
     history.push("/")
   })
-  .catch ( res => {
-    console.log(res);
+  .catch( res => {
+    window.alert(res.response.data.errors.full_messages)
   })
 }
 
@@ -43,7 +43,7 @@ handleLogout = (history) => {
     return (
       <AuthContext.Provider value={{
         ...this.state,
-        authentication: this.state.user !== null,
+        authenticated: this.state.user !== null,
         handleRegister: this.handleRegister,
         handleLogin: this.handleLogin,
         handleLogout: this.handleLogout,
