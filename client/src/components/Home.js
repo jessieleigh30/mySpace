@@ -40,9 +40,11 @@ class Home extends React.Component {
     return (
       <div>
       <br/>
-      <Header as="h1">My Space Buds</Header>
+      <Header as="h1" textAlign="center">MySpace Buds</Header>
       <br/>
-      <Card key={friend.id}>
+      <Card 
+      centered
+      key={friend.id}>
         <Image src={friend.avatar} />
         <Card.Content>
           <Card.Header>
@@ -63,11 +65,7 @@ class Home extends React.Component {
           </Button>
         </Card.Content>
       </Card>
-      <Link to="/my_friends">
-        <Button color="blue">
-         My Buds
-        </Button>
-      </Link>
+      
 
       </div>
       )
